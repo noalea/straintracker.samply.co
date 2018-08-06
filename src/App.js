@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HomeGuest from './components/HomeGuest.js';
+import HomeApp from './components/HomeApp.js';
 
 class App extends Component {
+
+  state = {
+    guest: false
+  };
+
   render() {
+
+    let { guest } = this.state;
+
+    function RenderContent() {
+      if (guest) {
+        return <HomeGuest />
+      } else {
+        return <HomeApp />
+      }
+    }
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      RenderContent()
     );
   }
 }

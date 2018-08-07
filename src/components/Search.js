@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Search extends Component {
 
@@ -8,9 +8,6 @@ class Search extends Component {
   };
 
   componentDidMount() {
-    this.setState({
-      search: this.props.match.params.name
-    });
   };
 
   render() {
@@ -24,4 +21,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default withRouter(Search);

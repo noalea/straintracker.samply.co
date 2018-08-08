@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import searchImg from '../assets/search.png';
 import $ from 'jquery';
 
 class SearchBar extends Component {
@@ -18,7 +17,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="search-bar">
-        <img src={searchImg} />
+        <img src={'./assets/search.png'} alt={''} />
         <input type={'text'} onChange={this.typing.bind(this)} placeholder={'Search a Strain...'} />
       </div>
     );

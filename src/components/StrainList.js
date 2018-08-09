@@ -32,6 +32,7 @@ class StrainList extends Component {
     })
     .done(function(data) {
       let d = JSON.parse(data);
+      console.log(d);
       if (d[0] !== null) {
         self.setState(() => {
           return {

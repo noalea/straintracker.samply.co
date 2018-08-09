@@ -31,6 +31,7 @@ body {
   transition: all 0.3s ease;
 }
 .wrapper.whover:hover {
+  cursor: pointer;
   -webkit-transform: translate(2px, -2px);
   -moz-transform: translate(2px, -2px);
   -ms-transform: translate(2px, -2px);
@@ -69,7 +70,16 @@ body {
 .tooltip-holder:hover .tooltip {
   display: block;
 }
-
+button {
+  font-size: 1.2rem;
+  font-family: 'Source Code Pro', sans-serif;
+  border: 0;
+  padding: 20px 30px!important;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+  outline: none;
+}
 
 
 
@@ -117,4 +127,10 @@ body {
 }
 .strain-block .effects > div:last-child {
   padding-right: 0;
+}
+
+/*SEARCH*/
+.search button {
+  background: #2e3b21;
+  color: white;
 }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import StrainBlock from './StrainBlock';
 import $ from 'jquery';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
+
 
 class Search extends Component {
 
@@ -11,18 +13,32 @@ class Search extends Component {
     strains: [],
     effectsOne: [],
     effectsTwo: [],
-    effectsThree: []
+    effectsThree: [],
+    empty: false
   };
 
   componentWillMount() {
     this.getSearched();
-  };
+  }
 
   componentDidUpdate() {
-    // this.getSearched();
+    if (this.state.search !== this.props.match.params.name) {
+      this.setState(() => {
+        return {
+          empty: false,
+          search: this.props.match.params.name
+        }
+      });
+      this.getSearched();
+    }
   }
 
   getSearched() {
+    this.setState(() => {
+      return {
+        search: this.props.match.params.name
+      }
+    });
     let self = this;
     let data = JSON.stringify({
       user: cookies.get('uid'),
@@ -35,7 +51,6 @@ class Search extends Component {
     })
     .done(function(data) {
       let d = JSON.parse(data);
-      console.log(d);
       if (d[0] !== null) {
         self.setState(() => {
           return {
@@ -43,6 +58,12 @@ class Search extends Component {
             effectsOne: d[1],
             effectsTwo: d[2],
             effectsThree: d[3]
+          }
+        });
+      } else {
+        self.setState(() => {
+          return {
+            empty: true
           }
         });
       }
@@ -53,11 +74,40 @@ class Search extends Component {
   }
 
   render() {
-    let name = this.props.match.params.name;
+    let { strains, effectsOne, effectsTwo, effectsThree, empty } = this.state;
+    let slist = [];
+
+    function RenderStrainList() {
+      if (empty) {
+        slist.push(
+          <h3>You can add that strain below.</h3>
+        );
+        return slist;
+      }
+      else if (strains.length === 0) {
+        slist.push(
+          <h3>Searching...</h3>
+        );
+        return slist;
+      }
+      else {
+        for (let i = 0; i < strains.length; i++) {
+          slist.push(
+            <StrainBlock
+              key={i}
+              name={strains[i]}
+              eOne={effectsOne[i]}
+              eTwo={effectsTwo[i]}
+              eThree={effectsThree[i]}
+            />
+          );
+        }
+      }
+      return slist;
+    }
     return (
       <div className="search">
-        <h1>Search</h1>
-        <p>{name}</p>
+        {RenderStrainList()}
         <hr />
         <button className={'wrapper whover'}>Add Strain</button>
       </div>

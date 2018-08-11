@@ -21,6 +21,10 @@ class Search extends Component {
     this.getSearched();
   }
 
+  componentDidMount() {
+    $(".search-bar input").val(this.props.match.params.name);
+  }
+
   componentDidUpdate() {
     if (this.state.search !== this.props.match.params.name) {
       this.setState(() => {
@@ -73,6 +77,11 @@ class Search extends Component {
     });
   }
 
+  toAdd() {
+    let link = '/add/' + $(".search-bar input").val();
+    this.props.history.push(link);
+  }
+
   render() {
     let { strains, effectsOne, effectsTwo, effectsThree, empty } = this.state;
     let slist = [];
@@ -80,13 +89,13 @@ class Search extends Component {
     function RenderStrainList() {
       if (empty) {
         slist.push(
-          <h3>You can add that strain below.</h3>
+          <h3 key={1}>You can add that strain below.</h3>
         );
         return slist;
       }
       else if (strains.length === 0) {
         slist.push(
-          <h3>Searching...</h3>
+          <h3 key={1}>Searching...</h3>
         );
         return slist;
       }
@@ -109,7 +118,7 @@ class Search extends Component {
       <div className="search">
         {RenderStrainList()}
         <hr />
-        <button className={'wrapper whover'}>Add Strain</button>
+        <button onClick={this.toAdd.bind(this)} className={'wrapper whover add-btn'}>Add Strain</button>
       </div>
     );
   }

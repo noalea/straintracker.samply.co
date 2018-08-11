@@ -19,6 +19,10 @@ class StrainList extends Component {
     cookies.set('uid', 1, { path: '/' });
     this.getStrains();
   };
+  
+  componentDidMount() {
+    $(".search-bar input").val("");
+  }
 
   getStrains() {
     let self = this;

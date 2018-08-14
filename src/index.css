@@ -38,6 +38,12 @@ body {
   -o-transform: translate(2px, -2px);
   transform: translate(2px, -2px);
 }
+.flying-img {
+  position: absolute;
+  -webkit-box-shadow: 0px 0px 100px 20px rgba(11, 48, 9, 0.15);
+  box-shadow: 0px 0px 100px 20px rgba(11, 48, 9, 0.15);
+  opacity: 0.5;
+}
 .tooltip-holder {
   position: relative;
 }
@@ -297,5 +303,65 @@ button {
 
   40%, 60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+/*LANDING*/
+.landing header {
+  text-align: center;
+  color: #2e3b21;
+  z-index: 2;
+  margin-bottom: 60px;
+}
+.landing header h1 {
+  font-size: 3.2rem;
+  margin-top: 0;
+}
+.landing header h3 {
+  font-weight: normal;
+  margin-bottom: 5px;
+  font-size: 2.2rem;
+}
+.landing header p {
+  color: #5a7441;
+  font-size: 1.5rem;
+}
+.landing .add-btn {
+  width: 230px;
+  padding-top: 16px!important;
+  font-size: 1.3rem;
+  margin-top: 40px;
+}
+.landing .add-btn small {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  opacity: 0.5;
+}
+.landing .flying-img.first {
+  top: calc(22% - 50px);
+  left: -20px;
+}
+.landing .flying-img.second {
+  bottom: -50px;
+  right: -150px;
+}
+.landing .flying-img.third {
+  bottom: -200px;
+  left: -40px;
+  -webkit-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+@media (max-width: 970px) {
+  .landing .flying-img.third {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .landing .flying-img {
+    display: none;
   }
 }

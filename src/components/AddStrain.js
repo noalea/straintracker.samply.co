@@ -18,7 +18,7 @@ class AddStrain extends Component {
     }, 100);
   }
 
-  goBack() {
+  goHome() {
     this.props.history.push('/');
   }
 
@@ -47,16 +47,42 @@ class AddStrain extends Component {
     }
     if (valid) {
       $.each($(".effects .tooltip-holder.selected"), function(i, obj) {
-        let span = $(obj)[0].children[0].innerHTML;
-        effectsArr.push(span);
+        let id = $(obj)[0].children[1].id.split("-")[1];
+        effectsArr.push(id);
       });
       this.submitStrain(name, effectsArr);
     }
   }
 
-  submitStrain(name, effectArr) {
-    console.log(name);
-    console.log(effectArr);
+  submitStrain(name, effectsArr) {
+    let self = this;
+    let data = JSON.stringify({
+      user: cookies.get('uid'),
+      strainName: name,
+      effectsArr: effectsArr
+    });
+    $.ajax({
+      type: 'POST',
+      url: 'http://codeyourfreedom.com/straintracker/php/addStrain.php',
+      data: data
+    })
+    .done(function(data) {
+      let d = JSON.parse(data);
+      if (d) {
+        $(".add").addClass("success");
+        setTimeout(function() {
+          self.goHome();
+        }, 2000);
+      } else {
+        $(".add").addClass("fail");
+        setTimeout(function() {
+          self.goHome();
+        }, 2000);
+      }
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
   }
 
   render() {
@@ -67,21 +93,21 @@ class AddStrain extends Component {
           <input type={'text'} defaultValue={this.props.match.params.name} />
           <p className={'section-header-sm second'}>How did you feel? <span>Choose three.</span></p>
           <div className={'effects'}>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>paranoid</span><img id={'effect-paranoid'} src={site + '/assets/effects/paranoid.png'} alt={''} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>anxious</span><img src={site + '/assets/effects/anxious.png'} alt={''} id={'effect-anxious'} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>dizzy</span><img src={site + '/assets/effects/dizzy.png'} alt={''} id={'effect-dizzy'} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>headache</span><img src={site + '/assets/effects/headache.png'} alt={''} id={'effect-headache'} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>sleepy</span><img src={site + '/assets/effects/sleepy.png'} alt={''} id={'effect-sleepy'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>paranoid</span><img src={site + '/assets/effects/paranoid.png'} alt={''} id={'effect-1'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>anxious</span><img src={site + '/assets/effects/anxious.png'} alt={''} id={'effect-2'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>dizzy</span><img src={site + '/assets/effects/dizzy.png'} alt={''} id={'effect-3'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>headache</span><img src={site + '/assets/effects/headache.png'} alt={''} id={'effect-4'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>sleepy</span><img src={site + '/assets/effects/sleepy.png'} alt={''} id={'effect-5'} /></div>
           </div>
           <div className={'effects'}>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>relaxed</span><img src={site + '/assets/effects/relaxed.png'} alt={''} id={'effect-relaxed'} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>creative</span><img src={site + '/assets/effects/creative.png'} alt={''} id={'effect-creative'} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>focused</span><img src={site + '/assets/effects/focused.png'} alt={''} id={'effect-focused'} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>happy</span><img src={site + '/assets/effects/happy.png'} alt={''} id={'effect-happy'} /></div>
-            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>euphoric</span><img src={site + '/assets/effects/euphoric.png'} alt={''} id={'effect-euphoric'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>relaxed</span><img src={site + '/assets/effects/relaxed.png'} alt={''} id={'effect-6'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>creative</span><img src={site + '/assets/effects/creative.png'} alt={''} id={'effect-7'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>focused</span><img src={site + '/assets/effects/focused.png'} alt={''} id={'effect-8'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>happy</span><img src={site + '/assets/effects/happy.png'} alt={''} id={'effect-9'} /></div>
+            <div onClick={this.selectEffect.bind(this)} className={'tooltip-holder'}><span className={'tooltip'}>euphoric</span><img src={site + '/assets/effects/euphoric.png'} alt={''} id={'effect-10'} /></div>
           </div>
           <button onClick={this.addStrain.bind(this)} className={'wrapper whover add-btn'}>Add Strain</button>
-          <button onClick={this.goBack.bind(this)} className={'wrapper whover nevermind-btn'}>Nevermind</button>
+          <button onClick={this.goHome.bind(this)} className={'wrapper whover nevermind-btn'}>Nevermind</button>
         </div>
       </div>
     );

@@ -250,6 +250,37 @@ button {
   perspective: 1000px;
   color: #e43030;
 }
+.add::after,
+.add::after {
+  content: '';
+  background: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  border-radius: 3px;
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  transition: all 0.2s ease-in-out;
+  height: 0;
+  opacity: 0;
+}
+.add.success::after {
+  content: 'Strain Added!';
+  background: #1ace1a;
+  height: 100%;
+  opacity: 1;
+}
+.add.fail::after {
+  content: 'Hmm, something went wrong...';
+  background: #ca1c31;
+  height: 100%;
+  opacity: 1;
+  font-size: 1.6rem;
+}
 
 @keyframes shake {
   10%, 90% {

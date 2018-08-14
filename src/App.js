@@ -6,7 +6,7 @@ import HomeApp from './components/HomeApp.js';
 class App extends Component {
 
   state = {
-    guest: false
+    guest: true
   };
 
   render() {

@@ -36,14 +36,18 @@ body {
   -moz-transform: translate(2px, -2px);
   -ms-transform: translate(2px, -2px);
   -o-transform: translate(2px, -2px);
-  transform: translate(2px, -2px);
+  transform: translate(10px, -10px);
+  -webkit-box-shadow: -10px 10px 0px 0px rgb(184, 193, 183);
+  -moz-box-shadow: -10px 10px 0px 0px rgb(184, 193, 183);
+  box-shadow: -10px 10px 0px 0px rgb(184, 193, 183);
 }
 .flying-img {
   position: absolute;
   -webkit-box-shadow: 0px 0px 100px 20px rgba(11, 48, 9, 0.15);
   box-shadow: 0px 0px 100px 20px rgba(11, 48, 9, 0.15);
-  opacity: 0.5;
+  opacity: 0.4;
   animation: float 6s ease-in-out infinite;
+  animation-duration: 4.5s;
 }
 @keyframes float {
   0% {
@@ -358,13 +362,13 @@ button {
 .landing .flying-img.second {
   bottom: -50px;
   right: -150px;
+  animation-delay: 2s;
 }
 .landing .flying-img.third {
   bottom: -200px;
-  left: -40px;
-  -webkit-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  transform: scale(0.9);
+  left: -20px;
+  animation-delay: 0.7s;
+  animation-duration: 3s;
 }
 
 @media (max-width: 970px) {

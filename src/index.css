@@ -328,17 +328,18 @@ button {
   color: #2e3b21;
   z-index: 2;
   margin-bottom: 60px;
+  position: relative;
 }
-.landing header h1 {
+.landing header > h1 {
   font-size: 3.2rem;
   margin-top: 0;
 }
-.landing header h3 {
+.landing header > h3 {
   font-weight: normal;
   margin-bottom: 5px;
   font-size: 2.2rem;
 }
-.landing header p {
+.landing header > p {
   color: #5a7441;
   font-size: 1.5rem;
 }
@@ -380,4 +381,88 @@ button {
   .landing .flying-img {
     display: none;
   }
+}
+
+/*JOIN*/
+.join {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: #2e3b21;
+  padding: 40px;
+  text-align: left;
+  width: 100%;
+  min-height: 100%;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+.join.show {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.join .join-header {
+  margin-bottom: 35px;
+}
+.join .join-header h3 {
+  color: white;
+  font-weight: normal;
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.join .join-header p {
+  font-size: 0.9rem;
+  color: #768962;
+  margin-top: 5px;
+}
+.join .join-form input {
+  width: 100%;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 0;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+  color: white;
+  font-family: 'Source Code Pro', sans-serif;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(118,137,98,1);
+  -moz-box-shadow: 0px 0px 0px 1px rgba(118,137,98,1);
+  box-shadow: 0px 0px 0px 1px rgba(118,137,98,1);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.join .join-form input::placeholder {
+  color: #768962;
+}
+.join .join-form input:focus {
+  -webkit-box-shadow: 0px 0px 5px 1.5px rgb(162, 187, 136);
+  -moz-box-shadow: 0px 0px 5px 1.5px rgb(162, 187, 136);
+  box-shadow: 0px 0px 5px 1.5px rgb(162, 187, 136);
+}
+.join .join-form button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px 20px!important;
+}
+.join .join-signin p {
+  color: #768962;
+  font-size: 0.9rem;
+}
+.join .join-signin p span {
+  color: #cee0bd;
+  cursor: pointer;
 }

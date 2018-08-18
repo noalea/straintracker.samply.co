@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();

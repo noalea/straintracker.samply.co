@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Join from './Join.js';
+import $ from 'jquery';
 const site = window.location.origin;
 
 class HomeGuest extends Component {
@@ -7,9 +9,16 @@ class HomeGuest extends Component {
   state = {
   };
 
+  componentWillMount() {
+  }
+
   componentDidMount() {
 
   };
+
+  openJoin() {
+    $(".join").addClass("show");
+  }
 
   render() {
     return (
@@ -22,9 +31,8 @@ class HomeGuest extends Component {
             <h3>Your Personal</h3>
             <h1>Strain Tracker</h1>
             <p>Because everyone is different.</p>
-            <Link to={'/join'}>
-              <button className={'wrapper whover add-btn'}>Sign Up<small>Free Forever</small></button>
-            </Link>
+            <button onClick={this.openJoin.bind(this)} className={'wrapper whover add-btn'}>Sign Up<small>Free Forever</small></button>
+            <Join />
           </header>
         </div>
       </Router>

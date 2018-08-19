@@ -21,8 +21,9 @@ class Join extends Component {
     return regex.test(email);
   }
 
-  isUsernameAvailable(username) {
+  isUsernameAvailable(isEmailAvail) {
     // Check if username exists
+    let username = this.getData().username, self = this;
     let userData = JSON.stringify({
       username: username
     });
@@ -34,24 +35,17 @@ class Join extends Component {
     })
     .done(function(data) {
       let d = JSON.parse(data);
-      console.log(d);
+      if (d === 1) self.createAccount(isEmailAvail, false);
+      else self.createAccount(isEmailAvail, true);
     })
     .fail(function(err) {
       console.log(err);
     });
   }
 
-  returnTrue() {
-    return true;
-  }
-
-  returnFalse() {
-    return false;
-  }
-
-  isEmailAvailable(email) {
+  isEmailAvailable() {
     // Check if email exists
-    let taken = false, self = this;
+    let email = this.getData().email, self = this;
     let userData = JSON.stringify({
       email: email
     });
@@ -63,9 +57,8 @@ class Join extends Component {
     })
     .done(function(data) {
       let d = JSON.parse(data);
-      console.log('d ', d);
-      // if (d == 1) self.validateCreate(true);
-      // else self.validateCreate(false);
+      if (d === 1) self.isUsernameAvailable(false);
+      else self.isUsernameAvailable(true);
     })
     .fail(function(err) {
       console.log(err);
@@ -81,14 +74,15 @@ class Join extends Component {
     }
   }
 
-  validateCreate(isEmailAvail) {
-    let data = this.getData();
+  validateCreate(isEmailAvail, isUsernameAvail) {
+    let data = this.getData(), result = [];
     if (!this.isEmail(data.email) || !isEmailAvail)
-      return {
-        valid: false,
-        reason: 'email'
-      };
-    return true;
+      result.push('email');
+    if (!this.isEmpty(data.username) || !isUsernameAvail)
+      result.push('username');
+    if (data.password.length < 6)
+      result.push('password');
+    return result;
   }
 
   validateSignIn() {
@@ -104,9 +98,34 @@ class Join extends Component {
     });
   }
 
-  createAccount() {
-    let valid = this.validateCreate();
-    console.log(valid);
+  createAccount(isEmailAvail, isUsernameAvail) {
+    let valid = this.validateCreate(isEmailAvail, isUsernameAvail),
+        self = this;
+
+    if (valid.length === 0) {
+      // Create account
+      let userData = JSON.stringify({
+        email: self.getData().email,
+        user: self.getData().username,
+        password: self.getData().password
+      });
+
+      $.ajax({
+        type: 'POST',
+        url: 'http://codeyourfreedom.com/straintracker/php/createAccount.php',
+        data: userData
+      })
+        .done(function(data) {
+          let d = JSON.parse(data);
+          console.log(d);
+        })
+        .fail(function(err) {
+          console.log(err);
+        });
+    } else {
+      // Show errors
+      console.log(valid);
+    }
   }
 
   render() {
@@ -124,8 +143,8 @@ class Join extends Component {
             <div className={'join-form'}>
               <input type={'email'} name={'email'} placeholder={'Email'} autoComplete={'off'}/>
               <input type={'text'} name={'username'} placeholder={'Username'} autoComplete={'off'}/>
-              <input type={'password'} name={'password'} placeholder={'Password'}/>
-              <button onClick={self.createAccount.bind(self)} className={'wrapper whover create-btn'}>Create Account
+              <input type={'password'} name={'password'} placeholder={'Password (at least 6 chars)'}/>
+              <button onClick={self.isEmailAvailable.bind(self)} className={'wrapper whover create-btn'}>Create Account
               </button>
             </div>
             <div className={'join-signin'}>

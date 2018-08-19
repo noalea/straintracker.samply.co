@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="504262be-5ad6-4ed1-9087-4ffa74ac4187" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddStrain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStrain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeGuest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeGuest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Join.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Join.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/php/createAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/php/createAccount.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,14 +23,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Join.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Join.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Join.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
+            <state relative-caret-position="238">
+              <caret line="108" column="12" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createAccount.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/php/createAccount.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addStrain.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/php/addStrain.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkUsername.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/php/checkUsername.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -85,6 +110,7 @@
       <find>he`</find>
       <find>header</find>
       <find>buton</find>
+      <find>formSignIn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,6 +142,7 @@
         <option value="$PROJECT_DIR$/src/php/checkUsername.php" />
         <option value="$PROJECT_DIR$/src/php/checkEmail.php" />
         <option value="$PROJECT_DIR$/src/components/Join.js" />
+        <option value="$PROJECT_DIR$/src/php/createAccount.php" />
       </list>
     </option>
   </component>
@@ -218,12 +245,12 @@
       <workItem from="1533496932384" duration="33928000" />
       <workItem from="1534117330588" duration="7423000" />
       <workItem from="1534279984337" duration="2553000" />
-      <workItem from="1534384370913" duration="11822000" />
+      <workItem from="1534384370913" duration="14080000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55726000" />
+    <option name="totallyTimeSpent" value="57984000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -540,17 +567,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/php/addStrain.php">
+    <entry file="file://$PROJECT_DIR$/src/components/AddStrain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/php/checkUsername.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        <state relative-caret-position="-1491">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -561,20 +581,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AddStrain.js">
+    <entry file="file://$PROJECT_DIR$/src/php/checkUsername.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1491">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="19" />
+        <state relative-caret-position="360">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Join.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
+        <state relative-caret-position="238">
+          <caret line="108" column="12" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/php/addStrain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/php/createAccount.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>

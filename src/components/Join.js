@@ -96,6 +96,7 @@ class Join extends Component {
   }
 
   createAccount(isEmailAvail, isUsernameAvail) {
+    $(".error").removeClass("showTooltip");
     let valid = this.validateCreate(isEmailAvail, isUsernameAvail),
         self = this;
 
@@ -124,11 +125,22 @@ class Join extends Component {
       });
     } else {
       // Show errors
-      console.log(valid);
+      switch(valid[0]) {
+        case 'email':
+          $("#email-tooltip").addClass("showTooltip");
+          return;
+        case 'username':
+          $("#username-tooltip").addClass("showTooltip");
+          return;
+        case 'password':
+          $("#password-tooltip").addClass("showTooltip");
+          return;
+      }
     }
   }
 
   signIn() {
+    $(".error").removeClass("showTooltip");
     let self = this;
     // Check Sign in
     let userData = JSON.stringify({
@@ -147,6 +159,8 @@ class Join extends Component {
       if (d[0]) {
         cookies.set('uid', d[1], { path: '/' });
         window.location.reload(false);
+      } else {
+        $("#signin-tooltip").addClass("showTooltip");
       }
     })
     .fail(function(err) {
@@ -167,9 +181,18 @@ class Join extends Component {
               <p>Because everyone is different.</p>
             </div>
             <div className={'join-form'}>
-              <input type={'email'} name={'email'} placeholder={'Email'} autoComplete={'off'}/>
-              <input type={'text'} name={'username'} placeholder={'Username'} autoComplete={'off'}/>
-              <input type={'password'} name={'password'} placeholder={'Password (at least 6 chars)'}/>
+              <div>
+                <span id="email-tooltip" className="error fade" data-title="Email invalid or taken."></span>
+                <input type={'email'} name={'email'} placeholder={'Email'} autoComplete={'off'}/>
+              </div>
+              <div>
+                <span id="username-tooltip" className="error fade" data-title="Username invalid or taken."></span>
+                <input type={'text'} name={'username'} placeholder={'Username'} autoComplete={'off'}/>
+              </div>
+              <div>
+                <span id="password-tooltip" className="error fade" data-title="Password must be at least 6 characters." />
+                <input type={'password'} name={'password'} placeholder={'Password (at least 6 chars)'}/>
+              </div>
               <button onClick={self.isEmailAvailable.bind(self)} className={'wrapper whover create-btn'}>Create Account
               </button>
             </div>
@@ -186,6 +209,7 @@ class Join extends Component {
               <p>Because everyone is different.</p>
             </div>
             <div className={'join-form'}>
+              <span id="signin-tooltip" className="error fade" data-title="Incorrect username and/or password." />
               <input type={'text'} name={'username'} placeholder={'Username'} autoComplete={'off'}/>
               <input type={'password'} name={'password'} placeholder={'Password'}/>
               <button onClick={self.signIn.bind(self)} className={'wrapper whover create-btn'}>Sign In

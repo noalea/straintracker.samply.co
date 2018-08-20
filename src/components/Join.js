@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 const site = window.location.origin;
 
 
@@ -85,11 +87,6 @@ class Join extends Component {
     return result;
   }
 
-  validateSignIn() {
-    let data = this.getData();
-    console.log(data);
-  }
-
   toggleForm() {
     this.setState((state) => {
       return {
@@ -115,17 +112,46 @@ class Join extends Component {
         url: 'http://codeyourfreedom.com/straintracker/php/createAccount.php',
         data: userData
       })
-        .done(function(data) {
-          let d = JSON.parse(data);
-          console.log(d);
-        })
-        .fail(function(err) {
-          console.log(err);
-        });
+      .done(function(data) {
+        let d = JSON.parse(data);
+        if (d[0]) {
+          cookies.set('uid', d[1], { path: '/' });
+          window.location.reload(false);
+        }
+      })
+      .fail(function(err) {
+        console.log(err);
+      });
     } else {
       // Show errors
       console.log(valid);
     }
+  }
+
+  signIn() {
+    let self = this;
+    // Check Sign in
+    let userData = JSON.stringify({
+      user: self.getData().username,
+      password: self.getData().password
+    });
+
+    $.ajax({
+      type: 'POST',
+      url: 'http://codeyourfreedom.com/straintracker/php/signIn.php',
+      data: userData
+    })
+    .done(function(data) {
+      let d = JSON.parse(data);
+      console.log(d);
+      if (d[0]) {
+        cookies.set('uid', d[1], { path: '/' });
+        window.location.reload(false);
+      }
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
   }
 
   render() {
@@ -162,7 +188,7 @@ class Join extends Component {
             <div className={'join-form'}>
               <input type={'text'} name={'username'} placeholder={'Username'} autoComplete={'off'}/>
               <input type={'password'} name={'password'} placeholder={'Password'}/>
-              <button onClick={self.validateSignIn.bind(self)} className={'wrapper whover create-btn'}>Sign In
+              <button onClick={self.signIn.bind(self)} className={'wrapper whover create-btn'}>Sign In
               </button>
             </div>
             <div className={'join-signin'}>

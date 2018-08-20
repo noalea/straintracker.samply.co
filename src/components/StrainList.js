@@ -16,7 +16,6 @@ class StrainList extends Component {
   };
 
   componentWillMount() {
-    cookies.set('uid', 1, { path: '/' });
     this.getStrains();
   };
   

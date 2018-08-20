@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import HomeGuest from './components/HomeGuest.js';
 import HomeApp from './components/HomeApp.js';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 class App extends Component {
 
@@ -12,6 +14,9 @@ class App extends Component {
   render() {
 
     let { guest } = this.state;
+    if (cookies.get('uid') !== undefined) {
+      guest = false;
+    }
 
     function RenderContent() {
       if (guest) {

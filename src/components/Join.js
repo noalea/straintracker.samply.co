@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
-const site = window.location.origin;
 
 
 class Join extends Component {
@@ -116,7 +115,7 @@ class Join extends Component {
       .done(function(data) {
         let d = JSON.parse(data);
         if (d[0]) {
-          cookies.set('uid', d[1], { path: '/' });
+          cookies.set('st_uid', d[1], { path: '/' });
           window.location.reload(false);
         }
       })
@@ -157,7 +156,7 @@ class Join extends Component {
       let d = JSON.parse(data);
       console.log(d);
       if (d[0]) {
-        cookies.set('uid', d[1], { path: '/' });
+        cookies.set('st_uid', d[1], { path: '/' });
         window.location.reload(false);
       } else {
         $("#signin-tooltip").addClass("showTooltip");

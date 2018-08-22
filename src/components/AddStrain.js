@@ -57,7 +57,7 @@ class AddStrain extends Component {
   submitStrain(name, effectsArr) {
     let self = this;
     let data = JSON.stringify({
-      user: cookies.get('uid'),
+      user: cookies.get('st_uid'),
       strainName: name,
       effectsArr: effectsArr
     });

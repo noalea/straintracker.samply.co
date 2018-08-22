@@ -45,7 +45,7 @@ class Search extends Component {
     });
     let self = this;
     let data = JSON.stringify({
-      user: cookies.get('uid'),
+      user: cookies.get('st_uid'),
       search: this.props.match.params.name
     });
     $.ajax({

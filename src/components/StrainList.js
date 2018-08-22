@@ -26,7 +26,7 @@ class StrainList extends Component {
   getStrains() {
     let self = this;
     let data = JSON.stringify({
-      user: cookies.get('uid')
+      user: cookies.get('st_uid')
     });
     $.ajax({
       type: 'POST',
@@ -49,6 +49,11 @@ class StrainList extends Component {
     .fail(function(err) {
       console.log(err);
     });
+  }
+
+  logOff() {
+    cookies.remove('st_uid', { path: '/' });
+    window.location.reload(false);
   }
 
 
@@ -74,7 +79,10 @@ class StrainList extends Component {
 
     return (
       <div className="strain-list">
-        <h1>Your Strains</h1>
+        <div>
+          <h1>Your Strains</h1>
+          <p onClick={this.logOff.bind(this)}>Sign Out</p>
+        </div>
         {RenderStrainList()}
       </div>
     );

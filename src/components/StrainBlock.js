@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import $ from 'jquery';
+import { withRouter } from 'react-router-dom';
 const site = window.location.origin;
 
 class StrainBlock extends Component {
@@ -11,7 +10,7 @@ class StrainBlock extends Component {
 
     return (
       <div className="strain-block wrapper">
-        <Link to={'/strains/' + name.replace(/\s+/g, '-').toLowerCase()}>{name}</Link>
+        <p>{name}</p>
         <div className={'effects'}>
           <div className={'tooltip-holder'}><span className={'tooltip'}>{eOne}</span><img src={site + '/assets/effects/' + eOne + '-sm.png'} alt={''} /></div>
           <div className={'tooltip-holder'}><span className={'tooltip'}>{eTwo}</span><img src={site + '/assets/effects/' + eTwo + '-sm.png'} alt={''} /></div>

@@ -14,7 +14,7 @@ class App extends Component {
   render() {
 
     let { guest } = this.state;
-    if (cookies.get('uid') !== undefined) {
+    if (cookies.get('st_uid') !== undefined) {
       guest = false;
     }
 

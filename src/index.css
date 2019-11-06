@@ -291,7 +291,7 @@ button {
 }
 .add .effects .tooltip-holder.selected::after {
   content: '';
-  background-image: url(http://localhost:3000/assets/check.png);
+  background-image: url(/assets/check.png);
   position: absolute;
   width: 16px;
   height: 16px;

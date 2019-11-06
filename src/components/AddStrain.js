@@ -63,7 +63,7 @@ class AddStrain extends Component {
     });
     $.ajax({
       type: 'POST',
-      url: 'http://codeyourfreedom.com/straintracker/php/addStrain.php',
+      url: 'https://straintracker.samply.co/php/addStrain.php',
       data: data
     })
     .done(function(data) {

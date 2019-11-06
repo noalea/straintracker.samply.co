@@ -18,7 +18,7 @@ class StrainList extends Component {
   componentWillMount() {
     this.getStrains();
   };
-  
+
   componentDidMount() {
     $(".search-bar input").val("");
   }
@@ -30,7 +30,7 @@ class StrainList extends Component {
     });
     $.ajax({
       type: 'POST',
-      url: 'http://codeyourfreedom.com/straintracker/php/getUserStrains.php',
+      url: 'https://straintracker.samply.co/php/getUserStrains.php',
       data: data
     })
     .done(function(data) {

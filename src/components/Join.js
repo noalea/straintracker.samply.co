@@ -31,7 +31,7 @@ class Join extends Component {
 
     $.ajax({
       type: 'POST',
-      url: 'http://codeyourfreedom.com/straintracker/php/checkUsername.php',
+      url: 'https://straintracker.samply.co/php/checkUsername.php',
       data: userData
     })
     .done(function(data) {
@@ -53,7 +53,7 @@ class Join extends Component {
 
     $.ajax({
       type: 'POST',
-      url: 'http://codeyourfreedom.com/straintracker/php/checkEmail.php',
+      url: 'https://straintracker.samply.co/php/checkEmail.php',
       data: userData
     })
     .done(function(data) {
@@ -109,7 +109,7 @@ class Join extends Component {
 
       $.ajax({
         type: 'POST',
-        url: 'http://codeyourfreedom.com/straintracker/php/createAccount.php',
+        url: 'https://straintracker.samply.co/php/createAccount.php',
         data: userData
       })
       .done(function(data) {
@@ -149,7 +149,7 @@ class Join extends Component {
 
     $.ajax({
       type: 'POST',
-      url: 'http://codeyourfreedom.com/straintracker/php/signIn.php',
+      url: 'https://straintracker.samply.co/php/signIn.php',
       data: userData
     })
     .done(function(data) {

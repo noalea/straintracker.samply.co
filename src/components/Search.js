@@ -50,7 +50,7 @@ class Search extends Component {
     });
     $.ajax({
       type: 'POST',
-      url: 'http://codeyourfreedom.com/straintracker/php/getSearched.php',
+      url: 'https://straintracker.samply.co/php/getSearched.php',
       data: data
     })
     .done(function(data) {
